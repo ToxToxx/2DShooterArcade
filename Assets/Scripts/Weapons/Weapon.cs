@@ -3,23 +3,39 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public WeaponDataSO WeaponDataSO;
-    public GameObject Bullet;
+    public GameObject BulletPrefab;
     public string WeaponName { get; protected set; }
     public int Damage { get; protected set; }
     public float FireRate { get; protected set; }
-    public abstract void Shoot();
 
-    private void Awake()
+    protected BulletPool BulletPool;
+    private float nextFireTime;
+
+    protected virtual void Awake()
     {
-        try
+        if (WeaponDataSO != null)
         {
             WeaponName = WeaponDataSO.WeaponName;
             Damage = WeaponDataSO.Damage;
             FireRate = WeaponDataSO.FireRate;
         }
-        catch 
+        else
         {
-            Debug.LogError($"WeaponDataSO not assigned");
+            Debug.LogError("WeaponDataSO is not assigned.");
+        }
+
+        BulletPool = gameObject.AddComponent<BulletPool>();
+        BulletPool.Initialize(BulletPrefab, 20);
+    }
+
+    private void Update()
+    {
+        if (InputManager.ShootWasHeld && Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + FireRate;
+            Shoot();
         }
     }
+
+    public abstract void Shoot();
 }

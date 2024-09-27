@@ -3,9 +3,17 @@ public class Rifle : Weapon
 {
     public override void Shoot()
     {
-        if (InputManager.ShootWasHeld)
+        GameObject bullet = BulletPool.GetBullet();
+        bullet.transform.position = transform.position;
+        bullet.SetActive(true);
+
+        if (bullet.TryGetComponent<Bullet>(out var bulletComponent))
         {
-            Debug.Log($"{WeaponName}: Bang-Bang! Dealt {Damage} damage.");
+            bulletComponent.SetBulletPool(BulletPool); 
+        }
+        else
+        {
+            Debug.LogError("Bullet prefab does not have a Bullet component attached.");
         }
     }
 }

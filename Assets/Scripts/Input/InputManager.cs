@@ -35,5 +35,6 @@ public class InputManager : MonoBehaviour
         ShootWasPressed = _shootAction.WasPressedThisFrame();
         ShootWasHeld = _shootAction.IsPressed();
         ShootWasReleased = _shootAction.WasReleasedThisFrame();
+
     }
 }
