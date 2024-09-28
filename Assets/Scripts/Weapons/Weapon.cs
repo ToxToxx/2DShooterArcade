@@ -4,12 +4,12 @@ public abstract class Weapon : MonoBehaviour
 {
     public WeaponDataSO WeaponDataSO;
     public GameObject BulletPrefab;
+
     public string WeaponName { get; protected set; }
     public int Damage { get; protected set; }
     public float FireRate { get; protected set; }
 
-    protected BulletPool BulletPool;
-    private float nextFireTime;
+    private float _nextFireTime;
 
     protected virtual void Awake()
     {
@@ -23,19 +23,18 @@ public abstract class Weapon : MonoBehaviour
         {
             Debug.LogError("WeaponDataSO is not assigned.");
         }
-
-        BulletPool = gameObject.AddComponent<BulletPool>();
-        BulletPool.Initialize(BulletPrefab, 20);
+        InitializeBulletPool();
     }
 
     private void Update()
     {
-        if (InputManager.ShootWasHeld && Time.time >= nextFireTime)
+        if (InputManager.ShootWasHeld && Time.time >= _nextFireTime)
         {
-            nextFireTime = Time.time + FireRate;
+            _nextFireTime = Time.time + FireRate;
             Shoot();
         }
     }
 
+    public virtual void InitializeBulletPool() { }
     public abstract void Shoot();
 }
