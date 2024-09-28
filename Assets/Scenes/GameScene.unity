@@ -220,7 +220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponDataSO: {fileID: 11400000, guid: 710d423611635dc4a832cf19a3a84322, type: 2}
   BulletPrefab: {fileID: 756708526793871692, guid: 471f28e9a80177648bd1ee90a359d844, type: 3}
-  _bulletPoolCount: 20
+  _bulletSpeed: 20
+  _bulletPoolCount: 10
+  _maxBulletDistance: 10
 --- !u!1 &473275415
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,10 +324,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponDataSO: {fileID: 11400000, guid: 62b3cabc15bfc6144a041cab0e227eae, type: 2}
   BulletPrefab: {fileID: 1828132540702658973, guid: 18bcb1e2e39785944ac94fe1372124c9, type: 3}
-  _bulletLifetime: 5
+  _bulletSpeed: 20
+  _bulletPoolCount: 20
   _maxBulletDistance: 10
   _numberOfBullets: 6
-  _angleVariation: 10
+  _angleVariation: 30
 --- !u!1 &512101410
 GameObject:
   m_ObjectHideFlags: 0
