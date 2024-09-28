@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4192070802051978951}
   - component: {fileID: 8795416393196177593}
-  - component: {fileID: 3377797753237121129}
   - component: {fileID: 4244250194561418636}
+  - component: {fileID: 1718405039255151289}
   m_Layer: 0
   m_Name: ShotgunBullet
   m_TagString: Untagged
@@ -88,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3377797753237121129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828132540702658973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc50fbc3a429c84ebf50a735a73fdd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletSpeed: 20
-  _bulletLifeTime: 2
 --- !u!50 &4244250194561418636
 Rigidbody2D:
   serializedVersion: 4
@@ -117,7 +103,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -128,4 +114,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 0
+--- !u!114 &1718405039255151289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828132540702658973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ae54457c562924a9f53072a5800646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletLifetime: 2

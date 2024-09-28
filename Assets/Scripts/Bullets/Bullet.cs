@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _bulletSpeed = 20f;
     [SerializeField] private float _bulletLifeTime = 2f;
 
     private BulletPool _bulletPool;
@@ -18,27 +17,20 @@ public class Bullet : MonoBehaviour
         _bulletPool = pool;
     }
 
-    private void OnEnable()
+    public void Initialize(Vector2 direction, float speed)
     {
-        _rigidbody2D.velocity = transform.right * _bulletSpeed;
+        _rigidbody2D.velocity = direction * speed;
         Invoke(nameof(ReturnToPool), _bulletLifeTime);
     }
 
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
-        if (_bulletPool != null)
-        {
-            _bulletPool.ReturnBullet(gameObject);
-        }
-        else
-        {
-            Debug.LogError("Bullet pool is not set!");
-        }
+        _bulletPool.ReturnBullet(gameObject);
     }
 
     private void OnDisable()
     {
         CancelInvoke();
-        _rigidbody2D.velocity = Vector2.zero; 
+        _rigidbody2D.velocity = Vector2.zero;
     }
 }

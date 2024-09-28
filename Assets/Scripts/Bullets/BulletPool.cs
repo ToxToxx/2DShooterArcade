@@ -1,43 +1,29 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BulletPool : MonoBehaviour
 {
     private GameObject _bulletPrefab;
-    private Queue<GameObject> _bullets;
-    private int _poolSize;
+    private ObjectPool<GameObject> _bulletPool;
 
     public void Initialize(GameObject bulletPrefab, int poolSize)
     {
         _bulletPrefab = bulletPrefab;
-        _poolSize = poolSize;
-        _bullets = new Queue<GameObject>();
-
-        for (int i = 0; i < _poolSize; i++)
-        {
-            GameObject bullet = Instantiate(_bulletPrefab);
-            bullet.SetActive(false);
-            _bullets.Enqueue(bullet);
-        }
-    }
-
-    public GameObject GetBullet()
-    {
-        if (_bullets.Count > 0)
-        {
-            return _bullets.Dequeue();
-        }
-        else
+        _bulletPool = new ObjectPool<GameObject>(() =>
         {
             GameObject bullet = Instantiate(_bulletPrefab);
             bullet.SetActive(false);
             return bullet;
-        }
+        }, bullet => bullet.SetActive(true), bullet => bullet.SetActive(false), bullet => Destroy(bullet), true, poolSize, poolSize);
+    }
+
+    public GameObject GetBullet()
+    {
+        return _bulletPool.Get();
     }
 
     public void ReturnBullet(GameObject bullet)
     {
-        bullet.SetActive(false);
-        _bullets.Enqueue(bullet);
+        _bulletPool.Release(bullet);
     }
 }

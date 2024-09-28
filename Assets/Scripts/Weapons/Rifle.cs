@@ -1,19 +1,30 @@
 using UnityEngine;
 public class Rifle : Weapon
 {
+    private BulletPool _bulletPool;
+    [SerializeField] private int _bulletPoolCount = 20;
     public override void Shoot()
     {
-        GameObject bullet = BulletPool.GetBullet();
+        float bulletSpeed = 20f;
+        Vector2 bulletDirection = transform.right;
+
+        GameObject bullet = _bulletPool.GetBullet();
         bullet.transform.position = transform.position;
         bullet.SetActive(true);
 
         if (bullet.TryGetComponent<Bullet>(out var bulletComponent))
         {
-            bulletComponent.SetBulletPool(BulletPool); 
+            bulletComponent.SetBulletPool(_bulletPool);
+            bulletComponent.Initialize(bulletDirection, bulletSpeed);
         }
-        else
+    }
+
+    public override void InitializeBulletPool()
+    {
+        if (_bulletPool == null)
         {
-            Debug.LogError("Bullet prefab does not have a Bullet component attached.");
+            _bulletPool = gameObject.AddComponent<BulletPool>();
+            _bulletPool.Initialize(BulletPrefab, _bulletPoolCount);
         }
     }
 }
