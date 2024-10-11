@@ -40,7 +40,6 @@ public class PlayerStatsModel : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
         }
     }
 
