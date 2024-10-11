@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,6 +11,7 @@ public class Bullet : MonoBehaviour
     private int _damage;
     private float _maxDistance;  
     private Vector2 _startPosition;
+
 
     private void Awake()
     {
@@ -51,16 +53,17 @@ public class Bullet : MonoBehaviour
     {
         _bulletPool.ReturnBullet(gameObject);
     }
-/*
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if (collision.gameObject.TryGetComponent(out Health targetHealth))
         {
             targetHealth.TakeDamage(_damage);
-        }
+        }*/
+
         ReturnToPool();
     }
-*/
+
     private void OnDisable()
     {
         _rigidbody2D.velocity = Vector2.zero;
