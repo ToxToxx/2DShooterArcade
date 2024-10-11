@@ -10,7 +10,7 @@ public class ShotgunShootingStrategy : IShootingStrategy
     {
         _angleVariation = angleVariation;
         _numberOfBullets = numberOfBullets;
-        _maxBulletDistance = maxBulletDistance;  // Оставляем этот параметр для использования в стрельбе
+        _maxBulletDistance = maxBulletDistance; 
     }
 
     public void Shoot(Transform firePoint, GameObject bulletPrefab, float bulletSpeed, int damage, BulletPool bulletPool)
@@ -26,7 +26,6 @@ public class ShotgunShootingStrategy : IShootingStrategy
 
             if (bullet.TryGetComponent<Bullet>(out var bulletComponent))
             {
-                // Передаем максимальную дальность пули при инициализации
                 bulletComponent.Initialize(bulletDirection, bulletSpeed, damage, bulletPool, _maxBulletDistance);
             }
 

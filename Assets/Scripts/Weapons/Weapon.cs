@@ -5,8 +5,9 @@ public abstract class Weapon : MonoBehaviour
     public WeaponDataSO WeaponDataSO;
     public GameObject BulletPrefab;
 
-    [SerializeField] private float _bulletSpeed = 20f;  // Скорость пули задается в классе Weapon
-    [SerializeField] private int _bulletPoolCount = 20; // Размер пула пуль также задается в классе Weapon
+    [SerializeField] private float _bulletSpeed = 20f;
+    [SerializeField] private int _bulletPoolCount = 20;
+    [SerializeField] private Transform _firepoint;
 
     public string WeaponName { get; protected set; }
     public int Damage { get; protected set; }
@@ -37,7 +38,7 @@ public abstract class Weapon : MonoBehaviour
         if (InputManager.ShootWasHeld && Time.time >= _nextFireTime)
         {
             _nextFireTime = Time.time + FireRate;
-            Shoot();
+            Shoot(_firepoint);
         }
     }
 
@@ -46,7 +47,7 @@ public abstract class Weapon : MonoBehaviour
         if (_bulletPool == null)
         {
             _bulletPool = gameObject.AddComponent<BulletPool>();
-            _bulletPool.Initialize(BulletPrefab, _bulletPoolCount);  // Используем поле _bulletPoolCount
+            _bulletPool.Initialize(BulletPrefab, _bulletPoolCount);
         }
     }
 
@@ -55,8 +56,8 @@ public abstract class Weapon : MonoBehaviour
         _shootingStrategy = shootingStrategy;
     }
 
-    public virtual void Shoot()
+    public virtual void Shoot(Transform firepoint)
     {
-        _shootingStrategy.Shoot(transform, BulletPrefab, _bulletSpeed, Damage, _bulletPool);  // Используем поле _bulletSpeed
+        _shootingStrategy.Shoot(firepoint, BulletPrefab, _bulletSpeed, Damage, _bulletPool);
     }
 }

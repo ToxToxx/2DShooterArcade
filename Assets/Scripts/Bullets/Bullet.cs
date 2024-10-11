@@ -27,21 +27,19 @@ public class Bullet : MonoBehaviour
         _rigidbody2D.velocity = direction * speed;
         _damage = damage;
         _bulletPool = pool;
-        _maxDistance = maxDistance;  // Устанавливаем максимальную дальность
-        _startPosition = transform.position;  // Запоминаем стартовую позицию пули
+        _maxDistance = maxDistance;  
+        _startPosition = transform.position;  
         _lifeTimeTimer = _bulletLifeTime;
     }
 
     private void Update()
     {
-        // Отслеживаем расстояние, которое прошла пуля
         float distanceTraveled = Vector2.Distance(_startPosition, transform.position);
         if (distanceTraveled >= _maxDistance)
         {
-            ReturnToPool();  // Возвращаем пулю, если она превысила максимальную дистанцию
+            ReturnToPool(); 
         }
 
-        // Также можем учитывать время жизни пули
         _lifeTimeTimer -= Time.deltaTime;
         if (_lifeTimeTimer <= 0)
         {
@@ -65,7 +63,6 @@ public class Bullet : MonoBehaviour
 */
     private void OnDisable()
     {
-        // Сбрасываем состояние пули
         _rigidbody2D.velocity = Vector2.zero;
     }
 }

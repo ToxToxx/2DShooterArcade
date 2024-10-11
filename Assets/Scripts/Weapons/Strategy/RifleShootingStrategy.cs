@@ -19,7 +19,6 @@ public class RifleShootingStrategy : IShootingStrategy
 
         if (bullet.TryGetComponent<Bullet>(out var bulletComponent))
         {
-            // Передаем максимальную дистанцию пули
             bulletComponent.Initialize(bulletDirection, bulletSpeed, damage, bulletPool, _maxBulletDistance);
         }
     }
