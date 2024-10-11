@@ -976,8 +976,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1029725454}
   - component: {fileID: 1029725455}
+  - component: {fileID: 1029725456}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: RegularEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,8 +1011,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb4e8dd9c322ec4fa2f8a3f97026809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectPool: {fileID: 1029725456}
+  _spawnInterval: 5
+  _spawnPoint: {fileID: 1029725454}
+  _yRange: 3.5
+--- !u!114 &1029725456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029725453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5989cc88d8acbf42b901427ed4dca72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 3569751104470339271, guid: e752dea3081bbbc44b2a0244fdef9574, type: 3}
-  _enemyStatsSO: {fileID: 11400000, guid: 2bfbc48da8ed01047a1db63554c3da75, type: 2}
+  _poolSize: 10
 --- !u!1 &1035657085
 GameObject:
   m_ObjectHideFlags: 0

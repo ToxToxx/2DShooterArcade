@@ -4,6 +4,7 @@ public class EnemyHealthController : MonoBehaviour
 {
     public EnemyStatsSO EnemyStats;
     private int _currentHealth;
+    private ObjectPool _objectPool;
 
     private void Start()
     {
@@ -24,6 +25,11 @@ public class EnemyHealthController : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{EnemyStats.EnemyName} has died!");
-        gameObject.SetActive(false);
+        _objectPool.ReturnToPool(gameObject);
+    }
+
+    public void SetObjectPool(ObjectPool objectPool)
+    {
+        _objectPool = objectPool;
     }
 }

@@ -1,16 +1,36 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemyPrefab;
-    [SerializeField] private EnemyStatsSO _enemyStatsSO;
+    [SerializeField] private ObjectPool _objectPool; 
+    [SerializeField] private float _spawnInterval = 5f; 
+    [SerializeField] private Transform _spawnPoint; 
+    [SerializeField] private float _yRange = 3f;
 
     private void Start()
     {
-        GameObject enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
 
-        enemy.GetComponent<EnemyHealthController>().EnemyStats = _enemyStatsSO;
-        enemy.GetComponent<EnemyMovementController>().EnemyStats = _enemyStatsSO;
-        enemy.GetComponent<EnemyDamageController>().EnemyStats = _enemyStatsSO;
+        StartCoroutine(SpawnEnemyRoutine());
+    }
+
+    private IEnumerator SpawnEnemyRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_spawnInterval);
+
+            GameObject enemy = _objectPool.GetFromPool();
+
+            float randomY = Random.Range(-_yRange, _yRange);
+            enemy.transform.position = new(_spawnPoint.position.x, randomY);
+
+            if (enemy.TryGetComponent<EnemyHealthController>(out var enemyHealth))
+            {
+                enemyHealth.SetObjectPool(_objectPool);
+            }
+            Debug.Log("Enemy spawned.");
+        }
     }
 }
