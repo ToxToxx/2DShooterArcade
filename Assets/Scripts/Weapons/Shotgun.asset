@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   WeaponName: Shotgun
-  Damage: 3
+  Damage: 2
   FireRate: 1.5

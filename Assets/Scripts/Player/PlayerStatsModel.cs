@@ -43,4 +43,5 @@ public class PlayerStatsModel : MonoBehaviour
             DontDestroyOnLoad(gameObject); 
         }
     }
+
 }

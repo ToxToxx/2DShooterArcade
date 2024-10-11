@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   WeaponName: RocketLauncher
-  Damage: 10
-  FireRate: 2
+  Damage: 5
+  FireRate: 2.5
