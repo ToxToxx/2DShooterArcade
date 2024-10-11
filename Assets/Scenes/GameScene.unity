@@ -698,7 +698,7 @@ MonoBehaviour:
   _bulletSpeed: 20
   _bulletPoolCount: 20
   _firepoint: {fileID: 1271792615}
-  _maxBulletDistance: 10
+  _maxBulletDistance: 20
 --- !u!1 &955235908
 GameObject:
   m_ObjectHideFlags: 0

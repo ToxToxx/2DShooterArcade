@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1558142384215690410}
   - component: {fileID: 4684824198297889722}
   - component: {fileID: -2139595650266837603}
+  - component: {fileID: 7406521723948939603}
   - component: {fileID: -365600282313554930}
   m_Layer: 0
   m_Name: RocketPrefab
@@ -101,6 +102,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletLifeTime: 10
+--- !u!114 &7406521723948939603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399854195801727673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de8ad5f9df996f49b1ac7d069143823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionRadius: 5
+  _explosionDamage: 7
+  _damageLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &-365600282313554930
 Rigidbody2D:
   serializedVersion: 4
