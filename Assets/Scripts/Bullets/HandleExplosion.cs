@@ -10,14 +10,13 @@ public class HandleExplosion : MonoBehaviour
     {
         Collider2D[] hitObjects = Physics2D.OverlapCircleAll(collision.transform.position, _explosionRadius, _damageLayerMask);
 
-        /*
         foreach (Collider2D hit in hitObjects)
         {
-            if (hit.TryGetComponent<Health>(out var healthComponent))
+            if (hit.TryGetComponent<EnemyHealthController>(out var healthComponent))
             {
                 healthComponent.TakeDamage(_explosionDamage);
             }
-        }*/
+        }
 
         Debug.Log($"Explosion at {collision.transform.position}, dealing {_explosionDamage} damage to {hitObjects.Length} objects.");
     }

@@ -55,11 +55,10 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        if (collision.gameObject.TryGetComponent(out Health targetHealth))
+        if (collision.gameObject.TryGetComponent(out EnemyHealthController targetHealth))
         {
             targetHealth.TakeDamage(_damage);
-        }*/
+        }
 
         ReturnToPool();
     }
