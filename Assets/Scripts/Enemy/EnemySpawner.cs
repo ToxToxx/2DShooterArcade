@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-
         StartCoroutine(SpawnEnemyRoutine());
     }
 
@@ -26,10 +25,9 @@ public class EnemySpawner : MonoBehaviour
             float randomY = Random.Range(-_yRange, _yRange);
             enemy.transform.position = new(_spawnPoint.position.x, randomY);
 
-            if (enemy.TryGetComponent<EnemyHealthController>(out var enemyHealth))
-            {
-                enemyHealth.SetObjectPool(_objectPool);
-            }
+            enemy.GetComponent<EnemyHealthController>().SetObjectPool(_objectPool);
+            enemy.GetComponent<EnemyDamageController>().SetObjectPool(_objectPool);
+
             Debug.Log("Enemy spawned.");
         }
     }

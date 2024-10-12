@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: 2bfbc48da8ed01047a1db63554c3da75, type: 2}
-  _lifetime: 5
+  _lifetime: 10
 --- !u!114 &8675984697209233748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 6
 --- !u!61 &9182758308494927544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,13 +178,13 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 375
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 375
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 375
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
