@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: EnemyStats
       value: 
       objectReference: {fileID: 11400000, guid: 404abccc0d92a924989d79c542f6adfd, type: 2}
+    - target: {fileID: 8675984697209233748, guid: e752dea3081bbbc44b2a0244fdef9574, type: 3}
+      propertyPath: _enemyScoreCount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9182758308494927544, guid: e752dea3081bbbc44b2a0244fdef9574, type: 3}
       propertyPath: m_ForceSendLayers.m_Bits
       value: 375

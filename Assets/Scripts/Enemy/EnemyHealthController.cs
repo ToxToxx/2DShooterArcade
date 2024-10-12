@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyHealthController : MonoBehaviour
 {
     public EnemyStatsSO EnemyStats;
     private int _currentHealth;
     private ObjectPool _objectPool;
+
+    [SerializeField] private int _enemyScoreCount;
+
+    public static event Action<int> OnEnemyDeath;
 
     private void Start()
     {
@@ -26,6 +32,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         Debug.Log($"{EnemyStats.EnemyName} has died!");
         _objectPool.ReturnToPool(gameObject);
+        OnEnemyDeath?.Invoke(_enemyScoreCount);
     }
 
     public void SetObjectPool(ObjectPool objectPool)

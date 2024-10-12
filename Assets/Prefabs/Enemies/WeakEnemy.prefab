@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: 2bfbc48da8ed01047a1db63554c3da75, type: 2}
+  _enemyScoreCount: 5
 --- !u!114 &6598366845079883824
 MonoBehaviour:
   m_ObjectHideFlags: 0
