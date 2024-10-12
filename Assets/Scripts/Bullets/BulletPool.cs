@@ -37,6 +37,7 @@ public class BulletPool : MonoBehaviour
     {
         if (_activeBullets.Contains(bullet)) 
         {
+            bullet.transform.rotation = Quaternion.identity;
             _bulletPool.Release(bullet);
         }
         else
