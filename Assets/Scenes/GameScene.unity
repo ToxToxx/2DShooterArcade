@@ -222,7 +222,7 @@ MonoBehaviour:
   WeaponDataSO: {fileID: 11400000, guid: 710d423611635dc4a832cf19a3a84322, type: 2}
   BulletPrefab: {fileID: 756708526793871692, guid: 471f28e9a80177648bd1ee90a359d844, type: 3}
   _bulletSpeed: 20
-  _bulletPoolCount: 10
+  _bulletPoolCount: 15
   _firepoint: {fileID: 1895696335}
   _maxBulletDistance: 10
 --- !u!1 &239452739
@@ -1376,6 +1376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495336695}
+  - component: {fileID: 1495336696}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -1398,6 +1399,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1495336696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495336694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6de7b634b7418c46b0c623419b8bd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerScore: 0
 --- !u!1 &1538803101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1423,7 @@ GameObject:
   - component: {fileID: 1538803102}
   - component: {fileID: 1538803104}
   - component: {fileID: 1538803103}
+  - component: {fileID: 1538803105}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -1457,15 +1472,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'SCORE: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1534,6 +1549,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538803101}
   m_CullTransparentMesh: 1
+--- !u!114 &1538803105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538803101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e68ff9e77b7ad4a859e3dd25b1e4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreManager: {fileID: 1495336696}
+  _scoreText: {fileID: 1538803103}
 --- !u!1 &1672510894
 GameObject:
   m_ObjectHideFlags: 0

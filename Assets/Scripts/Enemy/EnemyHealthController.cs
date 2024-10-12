@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class EnemyHealthController : MonoBehaviour
 {
     public EnemyStatsSO EnemyStats;
-    private int _currentHealth;
+    [SerializeField] private int _currentHealth;
     private ObjectPool _objectPool;
 
     [SerializeField] private int _enemyScoreCount;
@@ -32,6 +32,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         Debug.Log($"{EnemyStats.EnemyName} has died!");
         _objectPool.ReturnToPool(gameObject);
+        _currentHealth = EnemyStats.EnemyMaxHealth;
         OnEnemyDeath?.Invoke(_enemyScoreCount);
     }
 
