@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WeakEnemy
   m_EditorClassIdentifier: 
   EnemyName: RegularEnemy
-  EnemyMaxHealth: 3
-  EnemySpeed: 10
+  EnemyMaxHealth: 5
+  EnemySpeed: 8
   Damage: 1
