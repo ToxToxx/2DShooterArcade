@@ -13,6 +13,7 @@ public class PlayerHealthController : MonoBehaviour
         {
             _playerStatsModel = PlayerStatsModel.Instance;
         }
+        Time.timeScale = 1.0f;
     }
 
     public void TakeDamage(int damage)
@@ -57,6 +58,7 @@ public class PlayerHealthController : MonoBehaviour
 
     private void PlayerDied()
     {
+        Time.timeScale = 0;
         Debug.Log("Player has died!");
     }
 }
