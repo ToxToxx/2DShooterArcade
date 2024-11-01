@@ -7,6 +7,8 @@ public class EnemySpawnersController : MonoBehaviour
     [SerializeField] private EnemySpawner[] _enemySpawners;
     [SerializeField] private int _maxActiveEnemySpawners = 1;
 
+    [SerializeField] private int _maxSpawners = 2;
+
     private void Start()
     {
         UpdateActiveSpawners();
@@ -28,6 +30,7 @@ public class EnemySpawnersController : MonoBehaviour
     public void IncreaseMaxActiveSpawners()
     {
         _maxActiveEnemySpawners++;
+        UpdateActiveSpawners();
     }
 
     public void DecreaseMaxActiveSpawners()
@@ -35,6 +38,23 @@ public class EnemySpawnersController : MonoBehaviour
         if (_maxActiveEnemySpawners > 1)
         {
             _maxActiveEnemySpawners--;
+        }
+    }
+
+    private void OnEnable()
+    {
+        EnemyBreakpointManager.OnEnemySpawnerBreakPointHappened += EnemyBreakpointManager_OnEnemySpawnerBreakPointHappened;
+    }
+    private void OnDisable()
+    {
+        EnemyBreakpointManager.OnEnemySpawnerBreakPointHappened -= EnemyBreakpointManager_OnEnemySpawnerBreakPointHappened;
+    }
+
+    private void EnemyBreakpointManager_OnEnemySpawnerBreakPointHappened(object sender, System.EventArgs e)
+    {
+        if (_maxActiveEnemySpawners < _maxSpawners)
+        {
+            IncreaseMaxActiveSpawners();
         }
     }
 }
