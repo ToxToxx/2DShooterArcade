@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private PlayerStatsModel _playerStatsModel;
     [SerializeField] private float _shieldDuration = 5f;         
-    [SerializeField] private bool _isShieldActive = false;                       
+    [SerializeField] private bool _isShieldActive = false;
+    public event EventHandler OnHealthChanged;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerHealthController : MonoBehaviour
         }
 
         _playerStatsModel.PlayerHealth -= damage;
+        OnHealthChanged?.Invoke(this, EventArgs.Empty);
         Debug.Log($"Player took {damage} damage. Current health: {_playerStatsModel.PlayerHealth}");
 
         if (_playerStatsModel.PlayerHealth <= 0)
@@ -37,6 +40,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         _playerStatsModel.PlayerHealth += healthAmount;
         Debug.Log($"Player restored {healthAmount} health. Current health: {_playerStatsModel.PlayerHealth}");
+        OnHealthChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void ActivateShield()
