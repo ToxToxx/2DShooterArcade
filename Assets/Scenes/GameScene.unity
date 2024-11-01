@@ -420,6 +420,7 @@ MonoBehaviour:
   - {fileID: 1029725455}
   - {fileID: 1057670213}
   _maxActiveEnemySpawners: 1
+  _maxSpawners: 2
 --- !u!1 &373780406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1363,8 @@ MonoBehaviour:
   _spawnPoint: {fileID: 1029725454}
   _yRange: 3.5
   _spawnDecreaser: 0.5
+  _maxDecreasing: 3
+  _currentDecreasing: 0
 --- !u!114 &1029725456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,7 +1638,9 @@ MonoBehaviour:
   _spawnInterval: 10
   _spawnPoint: {fileID: 1057670214}
   _yRange: 3.5
-  _spawnDecreaser: 0
+  _spawnDecreaser: 0.25
+  _maxDecreasing: 2
+  _currentDecreasing: 0
 --- !u!4 &1057670214
 Transform:
   m_ObjectHideFlags: 0
@@ -2162,7 +2167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d79f9abe6b92c479d23afd446a9a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breakPoints: 140000003200000064000000
+  _enemyIntervalBreakPoints: 3200000096000000fa000000
+  _weaponBreakPoints: 64000000
+  _enemySpawnerBreakPoints: 32000000
   _scoreManager: {fileID: 1495336696}
 --- !u!1 &1538803101
 GameObject:
@@ -2725,6 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedWeapon: 0
+  _maxCurrentWeapons: 1
   _maxWeapons: 4
 --- !u!1001 &1959441754
 PrefabInstance:

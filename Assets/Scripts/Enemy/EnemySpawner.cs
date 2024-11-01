@@ -10,9 +10,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _yRange = 3f;
 
     [SerializeField] private float _spawnDecreaser;
+    [SerializeField] private int _maxDecreasing = 3;
+    [SerializeField] private int _currentDecreasing = 0;
 
     private void Start()
     {
+
         StartCoroutine(SpawnEnemyRoutine());
     }
 
@@ -41,16 +44,21 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyBreakpointManager.OnBreakPointHappened += EnemyBreakpointManager_OnBreakPointHappened;
+        _currentDecreasing = 0;
+        EnemyBreakpointManager.OnEnemyIntervalBreakPointHappened += EnemyBreakpointManager_OnBreakPointHappened;
     }
 
     private void OnDisable()
     {
-        EnemyBreakpointManager.OnBreakPointHappened -= EnemyBreakpointManager_OnBreakPointHappened;
+        EnemyBreakpointManager.OnEnemyIntervalBreakPointHappened -= EnemyBreakpointManager_OnBreakPointHappened;
     }
 
     private void EnemyBreakpointManager_OnBreakPointHappened(object sender, System.EventArgs e)
     {
-       DecreaseSpawn();
+        if (_currentDecreasing < _maxDecreasing)
+        {
+            DecreaseSpawn();
+            _currentDecreasing++;
+        }
     }
 }
