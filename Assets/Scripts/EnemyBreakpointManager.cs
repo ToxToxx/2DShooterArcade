@@ -18,36 +18,23 @@ public class EnemyBreakpointManager : MonoBehaviour
 
     private void Update()
     {
-        CheckIfEnemyIntervalBreakpointHappened();
-        CheckIfEnemySpawnBreakpointHappened();
-        CheckIfWeaponBreakpointHappened();
+        int currentScore = _scoreManager.GetScore();
+        CheckBreakpoints(currentScore);
     }
 
-    private void CheckIfEnemyIntervalBreakpointHappened()
+    private void CheckBreakpoints(int currentScore)
     {
-        if (_enemyIntervalCounter < _enemyIntervalBreakPoints.Length && _scoreManager.GetScore() == _enemyIntervalBreakPoints[_enemyIntervalCounter])
+        CheckBreakpoint(currentScore, _enemyIntervalBreakPoints, ref _enemyIntervalCounter, OnEnemyIntervalBreakPointHappened);
+        CheckBreakpoint(currentScore, _enemySpawnerBreakPoints, ref _spawnerCounter, OnEnemySpawnerBreakPointHappened);
+        CheckBreakpoint(currentScore, _weaponBreakPoints, ref _weaponCounter, OnWeaponBreakPointHappened);
+    }
+
+    private void CheckBreakpoint(int currentScore, int[] breakPoints, ref int counter, EventHandler eventHandler)
+    {
+        if (counter < breakPoints.Length && currentScore == breakPoints[counter])
         {
-            OnEnemyIntervalBreakPointHappened?.Invoke(this, EventArgs.Empty);
-            _enemyIntervalCounter++;
+            eventHandler?.Invoke(this, EventArgs.Empty);
+            counter++;
         }
     }
-
-    private void CheckIfEnemySpawnBreakpointHappened()
-    {
-        if (_spawnerCounter < _enemySpawnerBreakPoints.Length && _scoreManager.GetScore() == _enemySpawnerBreakPoints[_spawnerCounter])
-        {
-            OnEnemySpawnerBreakPointHappened?.Invoke(this, EventArgs.Empty);
-            _spawnerCounter++;
-        }
-    }
-
-    private void CheckIfWeaponBreakpointHappened()
-    {
-        if (_weaponCounter < _weaponBreakPoints.Length && _scoreManager.GetScore() == _weaponBreakPoints[_weaponCounter])
-        {
-            OnWeaponBreakPointHappened?.Invoke(this, EventArgs.Empty);
-            _weaponCounter++;
-        }
-    }
-
 }

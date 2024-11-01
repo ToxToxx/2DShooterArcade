@@ -2167,9 +2167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d79f9abe6b92c479d23afd446a9a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyIntervalBreakPoints: 3200000096000000fa000000
+  _enemyIntervalBreakPoints: 32000000c80000005e010000
   _weaponBreakPoints: 64000000
-  _enemySpawnerBreakPoints: 32000000
+  _enemySpawnerBreakPoints: 96000000
   _scoreManager: {fileID: 1495336696}
 --- !u!1 &1538803101
 GameObject:
