@@ -1361,6 +1361,7 @@ MonoBehaviour:
   _spawnInterval: 2
   _spawnPoint: {fileID: 1029725454}
   _yRange: 3.5
+  _spawnDecreaser: 0.5
 --- !u!114 &1029725456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,6 +1635,7 @@ MonoBehaviour:
   _spawnInterval: 10
   _spawnPoint: {fileID: 1057670214}
   _yRange: 3.5
+  _spawnDecreaser: 0
 --- !u!4 &1057670214
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,8 +2101,9 @@ GameObject:
   - component: {fileID: 1495336695}
   - component: {fileID: 1495336696}
   - component: {fileID: 1495336697}
+  - component: {fileID: 1495336698}
   m_Layer: 0
-  m_Name: TimeAndScoreManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2147,6 +2150,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26196dd12c93bd4aa06af926418ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1495336698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495336694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d79f9abe6b92c479d23afd446a9a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _breakPoints: 140000003200000064000000
+  _scoreManager: {fileID: 1495336696}
 --- !u!1 &1538803101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,7 +2636,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
