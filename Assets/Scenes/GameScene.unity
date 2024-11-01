@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPool: {fileID: 1057670212}
-  _spawnInterval: 4
+  _spawnInterval: 10
   _spawnPoint: {fileID: 1057670214}
   _yRange: 3.5
 --- !u!4 &1057670214

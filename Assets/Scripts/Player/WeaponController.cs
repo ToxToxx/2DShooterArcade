@@ -58,4 +58,8 @@ public class WeaponController : MonoBehaviour
             SelectWeapon();
         }
     }
+    public void IncreaseMaxWeaponRange()
+    {
+        _maxWeapons++;
+    }
 }

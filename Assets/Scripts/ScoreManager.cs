@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private int _playerScore;
+    [SerializeField] private int _comboMultiplier = 1;
 
     private void OnEnable()
     {
@@ -28,7 +29,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        _playerScore += score;
+        _playerScore += score * _comboMultiplier;
     }
 
     public int GetScore()
