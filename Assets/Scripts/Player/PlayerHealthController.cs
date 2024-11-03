@@ -8,6 +8,7 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private float _shieldDuration = 5f;         
     [SerializeField] private bool _isShieldActive = false;
     public event EventHandler OnHealthChanged;
+    public event EventHandler OnPlayerDeath;
 
     private void Start()
     {
@@ -64,5 +65,6 @@ public class PlayerHealthController : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("Player has died!");
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
 }
