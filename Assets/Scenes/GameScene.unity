@@ -1207,7 +1207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426791754026389945, guid: 4e206df4b1814104981a004b764d1c58, type: 3}
       propertyPath: m_text
-      value: MENU
+      value: TRY AGAIN
       objectReference: {fileID: 0}
     - target: {fileID: 5426791754026389945, guid: 4e206df4b1814104981a004b764d1c58, type: 3}
       propertyPath: m_fontAsset
