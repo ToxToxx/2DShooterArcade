@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PauseUI : MonoBehaviour
 {
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     private void OnEnable()
     {
         Time.timeScale = 0f;
