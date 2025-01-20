@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 
     public void Initialize(Vector2 direction, float speed, int damage, BulletPool pool, float maxDistance)
     {
-        _rigidbody2D.velocity = direction * speed;
+        _rigidbody2D.linearVelocity = direction * speed;
         _damage = damage;
         _bulletPool = pool;
         _maxDistance = maxDistance;  
@@ -64,6 +64,6 @@ public class Bullet : MonoBehaviour
 
     private void OnDisable()
     {
-        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.linearVelocity = Vector2.zero;
     }
 }
