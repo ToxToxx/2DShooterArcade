@@ -7,6 +7,7 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private PlayerStatsModel _playerStatsModel;
     [SerializeField] private float _shieldDuration = 5f;         
     [SerializeField] private bool _isShieldActive = false;
+
     public event EventHandler OnHealthChanged;
     public event EventHandler OnPlayerDeath;
 
@@ -29,6 +30,9 @@ public class PlayerHealthController : MonoBehaviour
 
         _playerStatsModel.PlayerHealth -= damage;
         OnHealthChanged?.Invoke(this, EventArgs.Empty);
+
+        ActivateShield();
+
         Debug.Log($"Player took {damage} damage. Current health: {_playerStatsModel.PlayerHealth}");
 
         if (_playerStatsModel.PlayerHealth <= 0)

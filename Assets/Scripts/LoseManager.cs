@@ -9,6 +9,7 @@ public class LoseManager : MonoBehaviour
 
     private void OnEnable()
     {
+        _loseCanvas.SetActive(false);
         _healthController.OnPlayerDeath += _healthController_OnPlayerDeath;
     }
 
